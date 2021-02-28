@@ -61,12 +61,12 @@ body <- dashboardBody(
     tabItem(tabName = "input",
             h2("Enter Input Values"),br(),
             fluidRow(
-            box( title = "Project Options:", status = "primary", solidHeader = TRUE,width = 2,
+            shinydashboard::box( title = "Project Options:", status = "primary", solidHeader = TRUE,width = 2,
                  collapsible = TRUE,
             textInput("Author", "Author Name:", "Malek"),
             textInput("Compound", "Compound ID:", "55544432")),
             
-            box( title ="Display Options:",status = "primary", solidHeader = TRUE,width = 2,
+            shinydashboard::box( title ="Display Options:",status = "primary", solidHeader = TRUE,width = 2,
                  collapsible = TRUE,
                
                 checkboxInput("logPlot","Log Scale",value=T),
@@ -83,13 +83,13 @@ body <- dashboardBody(
             #checkboxInput("PredInterval","Show 90% Prediction Intervals",value=T),
             #checkboxInput("LimitsLines","Show Safety and Efficacy Limits",value=T),
             
-            box( title = "Simulation Options:", status = "primary", solidHeader = TRUE,width = 2,
+            shinydashboard::box( title = "Simulation Options:", status = "primary", solidHeader = TRUE,width = 2,
                  collapsible = TRUE,
                  numericInput("IDmax", "# of Subjects:", 4, min = 1, max = 10000,step = 1),
                  numericInput("SimTime", "Length of Sim:", 72, min = 1, max = 10000,step = 1)
             ),
             
-            box( title = "Dosing Input:", status = "primary", solidHeader = TRUE,width = 3,
+            shinydashboard::box( title = "Dosing Input:", status = "primary", solidHeader = TRUE,width = 3,
                  collapsible = TRUE,
                  textInput('DOSE', 'Enter a Dose Vector (Comma Delimited):', "10,50"),
                  numericInput("II", "II:", 0, min = 0, max = 500,step = 1),
@@ -100,7 +100,7 @@ body <- dashboardBody(
             )),
     
             fluidRow(
-            box( title = "PK Options:", status = "primary", solidHeader = TRUE,width = 4,
+            shinydashboard::box( title = "PK Options:", status = "primary", solidHeader = TRUE,width = 4,
                  collapsible = TRUE,
                  selectInput("PKmodel",
                              "Select the PK Model:",
@@ -276,19 +276,19 @@ body <- dashboardBody(
                    
                  )),
                  
-            box( title = "Safety Data:", status = "primary", solidHeader = TRUE,width = 2,
+            shinydashboard::box( title = "Safety Data:", status = "primary", solidHeader = TRUE,width = 2,
                  collapsible = TRUE,
                  numericInput("AUCinfSaf", "AUC:", 52, min = 0.0001, max = 100,step = .001),
                  numericInput("cmaxSafinput", "Cmax:", 0.5, min = 0.0001, max = 250,step = .001)
             ),
                  
-            box( title = "Efficacy Data:", status = "primary", solidHeader = TRUE,width = 2,
+            shinydashboard::box( title = "Efficacy Data:", status = "primary", solidHeader = TRUE,width = 2,
                  collapsible = TRUE,
                  numericInput("effConcLim", "Efficacy Conc Limit :", 0.06, min = 0.0001, max = 100,step = .001),
                  numericInput("effTimeLim", "Efficacy Time Limit :", 24, min = 0, max = 5000,step = 1)
             ),     
                  
-            box( title = "NCA Calculation Time-Limits:", status = "primary", solidHeader = TRUE,width = 2,
+            shinydashboard::box( title = "NCA Calculation Time-Limits:", status = "primary", solidHeader = TRUE,width = 2,
                  collapsible = TRUE, 
             
                  numericInput("NCAfrom", "Time to start the NCA calc:", 0, min = 0, max = 1000000000,step = .001),
@@ -299,7 +299,7 @@ body <- dashboardBody(
            h4("Helpful Hint: refresh browser to reset values!"),
            
            fluidRow(
-             box(width = "100%",
+             shinydashboard::box(width = "100%",
            column(10,h1("DosePredict 1.0", align = "center")),
            column(10,h4("A One Stop Shop for PK-Based Dose Predictions", align = "center")),
            column(10,h4("Malek Okour, BDS, PhD", align = "center"))
@@ -363,10 +363,10 @@ body <- dashboardBody(
     # 4th tab
     tabItem(tabName = "comments",
             fluidRow(
-              h2("Enter comments related to the current analysis in the box below"),br(),
+              h2("Enter comments related to the current analysis in the shinydashboard::box below"),br(),
               #tags$hr(style="border-color: blue;"),
               HTML('<textarea id="foo" rows="10" cols="200">  </textarea>'),
-              box(width = "100%",
+              shinydashboard::box(width = "100%",
                 column(10,h1("DosePredict 1.0", align = "center")),
                 column(10,h4("A One Stop Shop for PK-Based Dose Predictions", align = "center")),
                 column(10,h4("Malek Okour, BDS, PhD", align = "center"))
@@ -398,7 +398,7 @@ body <- dashboardBody(
                       
                       downloadButton('downloadTimeEfficacy', 'Time Efficacy Data'),
                       icon = icon("credit-card"), fill = TRUE)#,
-              # box(width = "100%",
+              # shinydashboard::box(width = "100%",
               #     column(10,h1("DosePredict 1.0", align = "center")),
               #     column(10,h4("A One Stop Shop for PK-Based Dose Predictions", align = "center")),
               #     column(10,h4("Malek Okour, BDS, PhD", align = "center"))
